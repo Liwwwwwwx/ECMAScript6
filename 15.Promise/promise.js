@@ -37,6 +37,8 @@ timeout(1000).then((value) => {
     console.log(value);
 })
 
+//Promise对象创建后会立即执行，所以先输出Promise；然后当前脚本所有同步任务执行完毕，此时输出promise_2；最后执行then方法里的回调函数
+
 let promise_2 = new Promise((res, rej) => {
     console.log('Promise');
     res()
@@ -47,3 +49,4 @@ promise_2.then(function() {
 })
 
 console.log('promise_2');
+
