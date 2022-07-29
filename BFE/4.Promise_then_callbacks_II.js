@@ -15,7 +15,7 @@ Promise.resolve(1)
   return Promise.reject(4)
 }).catch((val) => {
   console.log(val) // 4 no return
-  return 10
+  // return 10 则最后会输出10
 }).finally((val) => {
   console.log(val) // undefined
   return 10
