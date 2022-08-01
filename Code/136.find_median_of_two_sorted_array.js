@@ -2,6 +2,9 @@
  * @param {number[]} arr1 - sorted integer array
  * @param {number[]} arr2 - sorted integer array
  * @returns {number}
+ * 
+ * median([1,2],[3,4,5]) -> 3
+ * median([1,2],[3,4]) -> 2.5
  */
 function median(arr1, arr2) {
     // your code here
