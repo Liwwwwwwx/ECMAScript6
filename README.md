@@ -1,2 +1,2 @@
-# ECMAScript6
-ES6的一些笔记
+# InterviewPreparation
+面试的一些准备
