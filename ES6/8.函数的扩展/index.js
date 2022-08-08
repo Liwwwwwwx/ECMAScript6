@@ -64,3 +64,32 @@ setTimeout(() => console.log('s1: ', timer.s1), 3100);
 setTimeout(() => console.log('s2: ', timer.s2), 3100);
 // s1: 3
 // s2: 0
+
+//JS闭包
+function books() {
+  var book = '123'
+  return function () {
+    console.log(book);
+  }
+}
+
+var bag = books()
+bag()
+
+for (var i = 0; i < 5; i++) {
+  setTimeout(function () {
+    console.log(i++);
+  }, 4000)
+}
+
+console.log(i);
+
+for (var i = 0; i < 5; i++) {
+  (function (x) {
+    setTimeout(function () {
+      console.log(x++);
+    }, 4000)
+  })(i)
+}
+
+console.log(i);
