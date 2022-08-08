@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+/**
+ * prototype和__proto__之间有什么关系
+ * 所有对象都有__proto__属性，函数这个特殊对象除了具有__proto__属性，还有特有的原型属性prototype。
+ * prototype对象默认有两个属性，constructor属性和__proto__属性，prototype属性可以给函数和对象添加可共享的方法、属性
+ * __proto__是查找某个函数或对象的原型链方式。constructor，这个属性包含了一个指针，指回原构造函数
+ */
+
+function Person() {
+  this.name = 'zhangsan'
+}
+
+let zhangsan = new Person()
+console.dir(Person);
+console.log(Person.prototype);
+console.log(zhangsan.__proto__);
+</script>
+
+</html>
