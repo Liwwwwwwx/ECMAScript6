@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>防抖和节流</title>
+</head>
+
+<body>
+  <input type="button" id="btn" value="防抖">
+  <input type="button" id="btns" value="节流">
+</body>
+<script>
+  var btn = document.getElementById('btn')
+  var btns = document.getElementById('btns')
+
+  btn.addEventListener('click', trigger(real, 1000))
+  btns.addEventListener('click', triggers(real, 1000))
+
+  //1.普通方法
+  function real() {
+    console.log('1234567');
+  }
+  //防抖就是同setTimeout的方式，在一定的时间间隔内，将多次出发变成一次触发
+  
+  //2.只有一段时间都不点击定时器才能到达条件并执行事件函数
+  function trigger(fn, delay) {
+    var time = null
+    
+    return function () {
+      if (time) {
+        console.log(time);
+        clearTimeout(time)
+      }
+
+      time = setTimeout(() => {
+        fn()
+      }, delay)
+    }
+  }
+
+  //3.通过setTimeout的方式第一次会执行，后面不执行
+  function trigger(fn, delay) {
+    var time = null
+
+    return function() {
+      var firstClick = !time
+
+      if(firstClick) {
+        fn()
+      }
+
+      if(time) {
+        clearTimeout(time)
+      }
+
+      time = setTimeout(() => {
+        time = null
+      },delay)
+    }
+  }
+
+  //4.节流，保证在规定时间内执行一次执行函数
+  function triggers(fn, delay) {
+    var flag = true
+
+    return function() {
+      if(flag) {
+        setTimeout(() => {
+          fn()
+          flag = true
+        }, delay)
+      }
+
+      flag = false
+    }
+  }
+
+  //5.使用时间戳的方式实现节流
+  function trigger(fn, delay) {
+    var bef = 0
+    
+    return function(fn, delay) {
+      var now = new Date().getTime() 
+
+      if(now - bef > delay) {
+        fn()
+        bef = now
+      }
+    }
+  }
+</script>
+
+</html>
