@@ -1,0 +1,188 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+#box {
+  width: 100%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+#box::before{
+  content: '';
+  width: 100%;
+  height: var(--boxHeight);
+  top: 0;
+  left: 0;
+  position: absolute;
+  background: var(--bgImage) center center no-repeat; 
+  filter: blur(50px);
+  z-index: -1;
+  background-size: cover;
+}
+
+/* 上一首、下一首共同样式 */
+.controlBg{
+  width: 70px;
+  height: 60px;
+  background-color: #a4a09e;
+  vertical-align: middle;
+  position: relative;
+}
+.control{
+  width: 45px;
+  height: 30px;
+  color: white;
+  background-color: #a4a09e;
+  position: absolute;
+  top:15px;
+}
+
+/* 上一首 */
+.prevBg{
+  border-radius: 0 30px 30px 0;
+}
+.prev{
+  left: 8px;
+}
+
+/* 音乐播放主体 */
+.content_box{
+  width: 30%;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+/* 磁盘 */
+.musicBg{
+  border-radius: 50%;
+  width: 480px;
+  height: 480px;
+  background-image: url(./image/cipan.png);
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.musicImg{
+  width: 80%;
+  border-radius: 50%;
+}
+
+/* 鼠标划入事件 */
+.musicBg:hover .begin{
+  display: block;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 音乐开始 */
+.begin{
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  position: absolute;
+  display: none;
+}
+.beginImg{
+  width: 40%;
+  border-radius: 50%;
+  background: none;
+}
+
+/* 音乐背景图片转动 */
+.active{
+  animation:rotating 20s;
+  /* 无限循环 */
+  animation-iteration-count: infinite;
+  transition-timing-function: linear;
+  animation-fill-mode: backwards;
+}
+
+@keyframes rotating {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(90deg); }
+  50% { transform: rotate(180deg); }
+  75% { transform: rotate(270deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.isPause{
+  animation-play-state: paused;
+}
+
+/* 歌曲名称 | 作者信息 */
+.lyric{
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: hidden;
+  height: 140px;
+}
+.title{
+  font-size: 35px;
+  color: white;
+}
+
+.lyrics{
+  width: 400px;
+  text-align: center;
+  font-size: 15px;
+  height: 40px;
+  line-height: 40px;
+  color: white;
+  margin: 10px 0;
+}
+
+.lyricTxt{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* 喜欢、下载、循环 */
+.operation{
+  width: 70%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.switchBg{
+  width: 50px;
+  height: 50px;
+  background-color: #a4a09e;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.switch{
+  width: 30px;
+  height: 30px;
+}
+
+/* 下一首 */
+.nextBg{
+  border-radius: 30px 0 0 30px;
+}
+.next{
+  right:8px
+}
+
+.disk{
+  width: 400px;
+  height: 400px;
+}
