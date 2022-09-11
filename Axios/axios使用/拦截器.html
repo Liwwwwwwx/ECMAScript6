@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>拦截器</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.min.js"></script>
+</head>
+
+<body>
+    <script>
+        axios.interceptors.request.use(function (config) {
+            console.log('请求拦截器 成功-1')
+            // 此时可以修改config配置对象的值
+            return config
+        }, function (error) {
+            console.log('请求拦截器 失败-1')
+            return Promise.reject(error)
+        })
+
+        axios.interceptors.request.use(function (config) {
+            console.log('请求拦截器 成功-2')
+            // 此时可以修改config配置对象的值
+            return config
+        }, function (error) {
+            console.log('请求拦截器 失败-2')
+            return Promise.reject(error)
+        })
+
+        axios.interceptors.response.use(function (res) {
+            console.log('响应拦截器 成功-1')
+            // 此时可以修改res的值
+            return res.data
+        }, function (error) {
+            console.log('响应拦截器 失败-1')
+            return Promise.reject(error)
+        })
+
+        axios.interceptors.response.use(function (res) {
+            console.log('响应拦截器 成功-2')
+            return res
+        }, function (error) {
+            console.log('响应拦截器 失败-2')
+            return Promise.reject(error)
+        })
+
+        //发送请求
+        axios({
+            method: 'GET',
+            url: 'http://localhost:3000/comments'
+        }).then(res => {
+            console.log('自定义回调处理成功的结果')
+        })
+    </script>
+</body>
+
+</html>
